@@ -10,6 +10,11 @@ class Company extends Model
     /** @use HasFactory<\Database\Factories\CompanyFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'about'
+    ];
+
     public function jobPosts() {
         return $this->hasMany(JobPost::class);
     }

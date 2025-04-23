@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCompanyRequest;
-use App\Http\Requests\UpdateCompanyRequest;
+use Illuminate\Http\Request;
 use App\Models\Company;
 
 class CompanyController extends Controller
@@ -13,54 +12,59 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return Company::all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCompanyRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'string|required',
+            'about' => 'string|required'
+        ]);
+
+        $company = Company::create($validated);
+        $company->refresh();
+
+        return $company;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Company $company)
+    public function show(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Company $company)
-    {
-        //
+        $company = Company::findOrFail($id);
+        return $company;
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompanyRequest $request, Company $company)
+    public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'string',
+            'about' => 'string',
+        ]);
+
+        $company = Company::findOrFail($id);
+        $company->update($validated);
+        $company->refresh();
+
+        return $company;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Company $company)
+    public function destroy(string $id)
     {
-        //
+        $company = Company::findOrFail($id);
+        $company->delete();
+        
+        return response()->json(['message' => 'Company Deleted']);
     }
 }
