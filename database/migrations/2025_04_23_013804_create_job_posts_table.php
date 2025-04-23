@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->text('description');
-            $table->string('department');
+            $table->enum('department', ['engineering', 'hr', 'sales']);
             $table->string('location');
             $table->enum('location_type', ['remote', 'hybrid', 'onsite']);
             $table->unsignedBigInteger('company_id');

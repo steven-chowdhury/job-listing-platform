@@ -19,7 +19,7 @@ class JobPostFactory extends Factory
         return [
             'title' => fake()->jobTitle(),
             'description' => fake()->paragraph(10),
-            'department' => fake()->randomElement(['Engineering', 'Human Resources', 'Sales']),
+            'department' => fake()->randomElement(['engineering', 'hr', 'sales']),
             'location' => fake()->country(),
             'location_type' => fake()->randomElement(['remote', 'hybrid', 'onsite']),
             'company_id' => 1
