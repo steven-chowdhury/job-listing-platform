@@ -51,16 +51,16 @@ From the same directory, run the migrations and seeders using:
 ## Routes
 
 #### Company:
-```
+```http
 GET /api/companies  
 POST /api/companies  
 GET /api/companies/{id}  
 PUT /api/companies/{id}  
 DELETE /api/companies/{id}
-```  
+```
 
 #### Job:
-```
+```http
 GET /api/jobs   
 GET /api/companies/{companyId}/jobs 
 POST /api/companies/{companyId}/jobs 
@@ -92,6 +92,34 @@ Example Response:
     "qualifications": "5+ years professional experience developing and deploying iOS and Android apps using React Native. Passion for your craft and care for the people you work with. You value quality across code, communication, and culture.",
     "department": "engineering",
     "location": "United States",
+    "location_type": "remote",
+    "company_id": 1
+}
+```
+
+## Models
+#### Company
+```json
+{
+    "id": 1,
+    "created_at": "2025-04-24T03:01:10.000000Z",
+    "updated_at": "2025-04-24T03:01:10.000000Z",
+    "name": "Anderson, Skiles and Larson",
+    "about": "Dolor vel rerum odit quae et similique. Amet ut corrupti reprehenderit rerum ut et enim laudantium. Consequuntur ab odio molestias temporibus unde qui aperiam. Velit ullam qui et consequatur unde. Ab blanditiis quia suscipit voluptas ullam. Pariatur eos facere vero et quam ut repudiandae optio."
+}
+```
+
+#### Job
+```json
+{
+    "id": 4,
+    "created_at": "2025-04-24T03:01:10.000000Z",
+    "updated_at": "2025-04-24T03:01:10.000000Z",
+    "title": "Data Engineer",
+    "description": "Build and maintain our data infrastructure, ensuring high-quality pipelines and insights across the organization.",
+    "qualifications": "Strong SQL skills and experience with data tools like Airflow, Snowflake, or BigQuery. Python or Scala experience a plus.",
+    "department": "engineering",
+    "location": "San Francisco, CA",
     "location_type": "remote",
     "company_id": 1
 }
