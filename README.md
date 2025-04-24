@@ -84,16 +84,16 @@ Example Request:
 Example Response:
 ```json
 {
-    "id": 1,
-    "created_at": "2025-04-24T03:01:10.000000Z",
-    "updated_at": "2025-04-24T03:01:10.000000Z",
-    "title": "React Native Engineer",
-    "description": "As a React Native engineer, you will build simple and beautiful experiences for the crucial interactions people have with our platform every day.",
-    "qualifications": "5+ years professional experience developing and deploying iOS and Android apps using React Native. Passion for your craft and care for the people you work with. You value quality across code, communication, and culture.",
-    "department": "engineering",
-    "location": "United States",
-    "location_type": "remote",
-    "company_id": 1
+  "id": 1,
+  "created_at": "2025-04-24T03:01:10.000000Z",
+  "updated_at": "2025-04-24T03:01:10.000000Z",
+  "title": "React Native Engineer",
+  "description": "As a React Native engineer, you will build simple and beautiful experiences for the crucial interactions people have with our platform every day.",
+  "qualifications": "5+ years professional experience developing and deploying iOS and Android apps using React Native. Passion for your craft and care for the people you work with. You value quality across code, communication, and culture.",
+  "department": "engineering",
+  "location": "United States",
+  "location_type": "remote",
+  "company_id": 1
 }
 ```
 
@@ -101,27 +101,27 @@ Example Response:
 #### Company
 ```json
 {
-    "id": 1,
-    "created_at": "2025-04-24T03:01:10.000000Z",
-    "updated_at": "2025-04-24T03:01:10.000000Z",
-    "name": "Anderson, Skiles and Larson",
-    "about": "Dolor vel rerum odit quae et similique. Amet ut corrupti reprehenderit rerum ut et enim laudantium. Consequuntur ab odio molestias temporibus unde qui aperiam. Velit ullam qui et consequatur unde. Ab blanditiis quia suscipit voluptas ullam. Pariatur eos facere vero et quam ut repudiandae optio."
+  "id": 1,
+  "created_at": "2025-04-24T03:01:10.000000Z",
+  "updated_at": "2025-04-24T03:01:10.000000Z",
+  "name": "Anderson, Skiles and Larson",
+  "about": "Dolor vel rerum odit quae et similique. Amet ut corrupti reprehenderit rerum ut et enim laudantium. Consequuntur ab odio molestias temporibus unde qui aperiam. Velit ullam qui et consequatur unde. Ab blanditiis quia suscipit voluptas ullam. Pariatur eos facere vero et quam ut repudiandae optio."
 }
 ```
 
 #### Job
 ```json
 {
-    "id": 4,
-    "created_at": "2025-04-24T03:01:10.000000Z",
-    "updated_at": "2025-04-24T03:01:10.000000Z",
-    "title": "Data Engineer",
-    "description": "Build and maintain our data infrastructure, ensuring high-quality pipelines and insights across the organization.",
-    "qualifications": "Strong SQL skills and experience with data tools like Airflow, Snowflake, or BigQuery. Python or Scala experience a plus.",
-    "department": "engineering",
-    "location": "San Francisco, CA",
-    "location_type": "remote",
-    "company_id": 1
+  "id": 4,
+  "created_at": "2025-04-24T03:01:10.000000Z",
+  "updated_at": "2025-04-24T03:01:10.000000Z",
+  "title": "Data Engineer",
+  "description": "Build and maintain our data infrastructure, ensuring high-quality pipelines and insights across the organization.",
+  "qualifications": "Strong SQL skills and experience with data tools like Airflow, Snowflake, or BigQuery. Python or Scala experience a plus.",
+  "department": "engineering",
+  "location": "San Francisco, CA",
+  "location_type": "remote",
+  "company_id": 1
 }
 ```
 
