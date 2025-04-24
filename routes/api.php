@@ -26,4 +26,4 @@ Route::delete('/jobs/{id}', [JobPostController::class, 'destroy']);
 Route::put('/jobs/{id}/', [JobPostController::class, 'update']);
 
 // ATS Routes
-Route::post('/ats/best_job_match', [ATSController::class, 'bestJobMatch']);
+Route::post('/jobs/best_match', [ATSController::class, 'bestJobMatch']);
