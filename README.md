@@ -1,61 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Job Listing Platform
+- Port: 8000
+- Base URL: http://localhost:8000
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Setup Instructions
+#### 1. Install Composer
+Ensure Composer is installed on your system (ex: via Homebrew)
 
-## About Laravel
+#### 2. Clone the repository
+Clone the project onto your local machine:
+```bash
+git clone https://github.com/steven-chowdhury/job-listing-platform
+cd job-listing-platform
+```
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### 3. Configure MySQL
+Add your MySQL credentials to the .env file
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Example:
+```bash
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=job_listing_platform
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### 3. Configure OpenAI (optional)
+If you want to use the ATS endpoints and have an OpenAI API key, add it to the .env file as well
 
-## Learning Laravel
+```bash
+OPENAI_API_KEY=sk...
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Run Instructions
+#### 1. Start the Project
+From the project directory, run the following command to start the application: 
+```bash
+composer run dev
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+#### 2. Run the Migrations and Seeders
+From the same directory, run the migrations and seeders using: 
+  ```bash
+  php artisan migrate --seed
+  ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### 3. The project is now running on http://localhost:8000.
 
-## Laravel Sponsors
+## Routes
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+#### Company:
+```
+GET /api/companies  
+POST /api/companies  
+GET /api/companies/{id}  
+PUT /api/companies/{id}  
+DELETE /api/companies/{id}
+```  
 
-### Premium Partners
+#### Job:
+```
+GET /api/jobs   
+GET /api/companies/{companyId}/jobs 
+POST /api/companies/{companyId}/jobs 
+GET /api/jobs/{id} 
+PUT /api/jobs/{id} 
+DELETE /api/jobs/{id} 
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+#### ATS:
+```http
+POST /api/jobs/best_match
+```
 
-## Contributing
+Example Request:
+```json
+{
+  "resume": "iOS engineer with expertise in mobile frontend technologies." 
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Example Response:
+```json
+{
+    "id": 1,
+    "created_at": "2025-04-24T03:01:10.000000Z",
+    "updated_at": "2025-04-24T03:01:10.000000Z",
+    "title": "React Native Engineer",
+    "description": "As a React Native engineer, you will build simple and beautiful experiences for the crucial interactions people have with our platform every day.",
+    "qualifications": "5+ years professional experience developing and deploying iOS and Android apps using React Native. Passion for your craft and care for the people you work with. You value quality across code, communication, and culture.",
+    "department": "engineering",
+    "location": "United States",
+    "location_type": "remote",
+    "company_id": 1
+}
+```
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
