@@ -31,6 +31,7 @@ class JobPostController extends Controller
         $validated = $request->validate([
             'title' => 'string|required',
             'description' => 'string|required',
+            'qualifications' => 'string|required',
             'department' => 'string|in:sales,hr,engineering|required',
             'location' => 'string|required',
             'location_type' => 'string|in:remote,hybrid,onsite'
@@ -60,6 +61,7 @@ class JobPostController extends Controller
         $validated = $request->validate([
             'title' => 'string',
             'description' => 'string',
+            'qualifications' => 'string',
             'department' => 'string|in:sales,hr,engineering',
             'location' => 'string',
             'location_type' => 'string|in:remote,hybrid,onsite'
