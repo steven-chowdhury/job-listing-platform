@@ -34,9 +34,9 @@ class ATSController extends Controller
         $resume = $validated['resume'];
 
         $messages = [
-            "Given this array of jobs: {$jsonJobs}"
-            ."\nFind the best one that matches this candidate profile: {$resume}"
-            ."\nReturn as a json object with the same formatting as the original job"
+            "Given this array of jobs: {$jsonJobs}",
+            "Find the best one that matches this candidate profile: {$resume}",
+            "Return as a json object with the same formatting as the original job"
         ];
 
         $jobMatch = $this->sendPrompt($messages);
