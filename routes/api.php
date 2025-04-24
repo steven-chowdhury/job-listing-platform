@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ATSController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobPostController;
 use Illuminate\Http\Request;
@@ -23,3 +24,6 @@ Route::post('/companies/{companyId}/jobs', [JobPostController::class, 'store']);
 Route::get('/jobs/{id}', [JobPostController::class, 'show']);
 Route::delete('/jobs/{id}', [JobPostController::class, 'destroy']);
 Route::put('/jobs/{id}/', [JobPostController::class, 'update']);
+
+// ATS Routes
+Route::post('/ats/best_job_match', [ATSController::class, 'bestJobMatch']);
