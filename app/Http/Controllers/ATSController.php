@@ -23,24 +23,40 @@ class ATSController extends Controller
         ])
         ->json('choices.0.message.content');
 
-        return json_decode($json);
+        return json_decode($json, true);
     }
 
     function bestJobMatch(Request $request) {
-        $validated = $request->validate(['resume' => 'string|required']);
-        $jobs = JobPost::all();
+        $resumeText = '';
 
+        // Check if resume is uploaded as file or post body param
+        if ($request->hasFile('resume')) {
+            $file = $request->file('resume');
+            $parser = new \Smalot\PdfParser\Parser();
+            $pdf = $parser->parseFile($file->getRealPath());
+            $resumeText = $pdf->getText();     
+        } else {
+            $validated = $request->validate(['resume' => 'string|required']);
+            $resumeText = $validated['resume'];
+        }
+
+        $jobs = JobPost::all();
         $jsonJobs = json_encode($jobs);
-        $resume = $validated['resume'];
 
         $messages = [
-            "Given this array of jobs: {$jsonJobs}",
-            "Find the best one that matches this candidate profile: {$resume}",
-            "Return as a json object with the same formatting as the original job"
+            "Given this array of jobs:",
+            $jsonJobs,
+            "Find the best one that matches this resume:",
+            $resumeText,
+            "Return the id of the job in the format { id: jobId }"
         ];
 
-        $jobMatch = $this->sendPrompt($messages);
+        $data = $this->sendPrompt($messages);
 
-        return $jobMatch;
+        $id = $data ? $data['id'] : null;
+
+        $job = JobPost::findOrFail($id);
+
+        return $job;
     }
 }
