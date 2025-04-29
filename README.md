@@ -69,6 +69,15 @@ PUT /api/jobs/{id}
 DELETE /api/jobs/{id} 
 ```
 
+#### Candidate:
+```http
+GET /api/candidates   
+POST /api/candidates 
+GET /api/candidates/{id} 
+PUT /api/candidates/{id} 
+DELETE /api/candidates/{id} 
+```
+
 #### ATS:
 ```http
 POST /api/jobs/best_match
@@ -122,6 +131,20 @@ Example Response:
   "location": "San Francisco, CA",
   "location_type": "remote",
   "company_id": 1
+}
+```
+
+#### Candidate
+```json
+{
+  
+  "id": 3,
+  "created_at": "2025-04-28T22:24:10.000000Z",
+  "updated_at": "2025-04-28T22:24:10.000000Z",
+  "name": "Carol Davis",
+  "email": "carol.davis@example.com",
+  "phone": "555-123-4567",
+  "resume_summary": "Graphic designer with 7 years of experience in creating branding and marketing materials."
 }
 ```
 
