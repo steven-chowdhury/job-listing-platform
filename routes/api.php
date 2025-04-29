@@ -3,6 +3,7 @@
 use App\Http\Controllers\ATSController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\JobPostController;
+use App\Http\Controllers\CandidateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +28,10 @@ Route::put('/jobs/{id}/', [JobPostController::class, 'update']);
 
 // ATS Routes
 Route::post('/jobs/best_match', [ATSController::class, 'bestJobMatch']);
+
+// Candidate Routes
+Route::get('/candidates', [CandidateController::class, 'index']);
+Route::post('/candidates', [CandidateController::class, 'store']);
+Route::get('/candidates/{id}', [CandidateController::class, 'show']);
+Route::delete('/candidates/{id}', [CandidateController::class, 'destroy']);
+Route::put('/candidates/{id}/', [CandidateController::class, 'update']);

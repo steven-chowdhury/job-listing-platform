@@ -9,4 +9,11 @@ class Candidate extends Model
 {
     /** @use HasFactory<\Database\Factories\CandidateFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name', 
+        'email',
+        'phone',
+        'resume_summary'
+    ];
 }
